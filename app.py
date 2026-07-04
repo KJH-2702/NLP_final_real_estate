@@ -5,6 +5,7 @@ Streamlit 데모 앱
 계약서 PDF를 업로드하면 조항별 위험도 분류 + 근거 법조문 + AI 설명을 보여준다.
 """
 
+import os
 import tempfile
 
 import streamlit as st
@@ -14,6 +15,18 @@ try:
 
     load_dotenv()
 except ImportError:
+    pass
+
+# Streamlit Community Cloud 등에 배포하는 경우, 앱 설정의 "Secrets"에 등록한 값이
+# st.secrets로 들어온다. .env가 없는 배포 환경에서도 동작하도록 환경변수로 옮겨준다.
+# (로컬 개발 시에는 .env가 이미 있으므로 이 블록은 아무 영향이 없다.)
+try:
+    if "GOOGLE_API_KEY" in st.secrets:
+        os.environ.setdefault("GOOGLE_API_KEY", st.secrets["GOOGLE_API_KEY"])
+    if "GEMINI_MODEL" in st.secrets:
+        os.environ.setdefault("GEMINI_MODEL", st.secrets["GEMINI_MODEL"])
+except Exception:
+    # secrets.toml이 아예 없는 로컬 환경에서는 st.secrets 접근 자체가 예외를 던질 수 있음
     pass
 
 from pipeline import analyze_contract_pdf
