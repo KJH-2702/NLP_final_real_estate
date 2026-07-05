@@ -7,13 +7,14 @@ Streamlit 데모 앱
 
 import os
 import tempfile
+from pathlib import Path
 
 import streamlit as st
 
 try:
     from dotenv import load_dotenv
 
-    load_dotenv()
+    load_dotenv(Path(__file__).resolve().parent / "env" / ".env")
 except ImportError:
     pass
 
@@ -25,6 +26,8 @@ try:
         os.environ.setdefault("GOOGLE_API_KEY", st.secrets["GOOGLE_API_KEY"])
     if "GEMINI_MODEL" in st.secrets:
         os.environ.setdefault("GEMINI_MODEL", st.secrets["GEMINI_MODEL"])
+    if "HF_TOKEN" in st.secrets:
+        os.environ.setdefault("HF_TOKEN", st.secrets["HF_TOKEN"])
 except Exception:
     # secrets.toml이 아예 없는 로컬 환경에서는 st.secrets 접근 자체가 예외를 던질 수 있음
     pass

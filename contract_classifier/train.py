@@ -1,3 +1,12 @@
+from pathlib import Path
+
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv(Path(__file__).resolve().parent.parent / "env" / ".env")
+except ImportError:
+    pass
+
 import pandas as pd
 import torch
 from datasets import Dataset

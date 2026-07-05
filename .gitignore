@@ -1,9 +1,10 @@
 .venv/
 __pycache__/
 *.pyc
-.env
+env/.env
 .idea/
 data/law_embeddings.npy
+data/law_embeddings_meta.json
 
 # 학습된 모델 가중치/체크포인트: 파일당 400MB~800MB급이라 GitHub 100MB 제한을 넘음.
 # train.py로 언제든 재생성 가능하므로 git에는 커밋하지 않는다.
