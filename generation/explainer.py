@@ -66,7 +66,7 @@ class GeminiExplainer:
         if not api_key:
             raise RuntimeError(
                 "GOOGLE_API_KEY 환경변수가 설정되어 있지 않습니다. "
-                ".env 파일 또는 환경변수로 Gemini API 키를 설정하세요."
+                "env/.env 파일 또는 환경변수로 Gemini API 키를 설정하세요."
             )
         self.model_name = model_name or os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
         self.client = genai.Client(api_key=api_key)
