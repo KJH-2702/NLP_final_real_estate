@@ -24,7 +24,7 @@ import numpy as np
 위험(2) 조항은 주택임대차보호법의 강행규정을 위반하여 법적 무효에 해당하거나, 전세 사기(신탁 사기, 당일 대출 등) 및 불법 추심(단전·단수, 무단 침입)의 명백한 범죄 징후를 담고 있어, 위험도 예측 분류 모델(Classification Model)을 고도화하는 데 탁월한 학습 데이터로 기능할 것입니다.
 """
 LABELS = {0: "정상", 1: "주의", 2: "위험"}
-MODEL_NAME = "klue/bert-base"
+MODEL_NAME = "klue/roberta-base"
 SAVE_PATH = "../model/clause_classifier"
 
 

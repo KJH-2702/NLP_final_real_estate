@@ -59,4 +59,4 @@ if __name__ == "__main__":
     """
     results = analyze_contract(sample)
     for r in results:
-        print(f"[{r['label']}] {r['clause'][:50]}...")
+        print(f"[{r['label']}] ({r['confidence'] * 100:.1f}%) {r['clause'][:50]}...")
